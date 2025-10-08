@@ -19,10 +19,61 @@ https://jsmastery.com/access-resource?next=/video-kit/7df14775-f594-4367-9941-9a
 https://www.youtube.com/@javascriptmastery/videos
 
 git remote add origin https://github.com/pmkent/signalist_stock-tracker-app.git
+https://github.com/pmkent/signalist_stock-tracker-app
 
 $$$$$$$$$$$$$$$
 
+2025-10-07
+
+33:39 / 4:17:15
+
+npx shadcn@latest add avatar
+
+-Create components/UserDropdown.tsx
+
+npx shadcn@latest add dropdown-menu
+
+-Create lib/constants.ts
+
+-Create components/NavItems.tsx
+
+2025-10-06
+
+21:51 / 4:17:15 Layout & Header
+
+-Create components/Header.tsx
+
+-Create app/(root)/layout.tsx
+  -Move the layout.tsx back to the /app
+
+2025-10-05
+
+16:52 / 4:17:15
+
+-Move app/layout.tsx to app/(root)/layout.tsx
+-Move app/page.tsx to app/(root)/page.tsx
+
+-Create app/(root)
+
+
 2025-10-04
+
+15:40 / 4:17:15 Project Setup
+
+git push -u origin main
+git remote add origin https://github.com/pmkent/signalist_stock-tracker-app.git
+git branch -M main
+git commit -m "Initial commit"
+git add .
+git init
+
+
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/pmkent/signalist_stock-tracker-app.git
+git push -u origin main
 
 signalist_stock-tracker-app
 git remote add origin https://github.com/pmkent/signalist_stock-tracker-app.git
@@ -131,3 +182,7 @@ Ok to proceed? (y) y
 
 Success! Project initialization completed.
 You may now add components.
+
+$$$$$$$$$$$$$$$$$$$
+
+2025-10-07
