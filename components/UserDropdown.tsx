@@ -10,15 +10,21 @@ import { Button } from './ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { LogOut } from 'lucide-react'
 import NavItems from './NavItems'
+import { useRouter } from 'next/navigation'
 
 const UserDropdown = () => {
   const user = { name: 'Phil', email: 'philmkieti@hotmail.com' }
+  const router = useRouter()
+  const handleSignOut = async () => {
+    // localStorage.removeItem('token')
+    router.push('/sign-in')
+  }
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
           variant='ghost'
-          className='flex items-center gap-3 text-gray-400 hover:text-yellow-500'
+          className='flex items-center gap-3 text-gray-4 hover:text-yellow-500'
         >
           <Avatar className='h-8 w-8'>
             <AvatarImage
@@ -51,12 +57,6 @@ const UserDropdown = () => {
                 {user.name[0]}
               </AvatarFallback>
             </Avatar>
-            {/* <p className='text-sm font-medium text-gray-400 leading-none'>
-            {user.name}
-          </p>
-          <p className='text-xs leading-none text-muted-foreground'>
-            {user.email}
-          </p> */}
             <div className='flex flex-col'>
               <span className='text-base font-medium text-gray-400'>
                 {user.name}
@@ -65,10 +65,9 @@ const UserDropdown = () => {
             </div>
           </div>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator className='border-gray-600' />
-        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuSeparator className='bg-gray-600' />
         <DropdownMenuItem
-          onClick={() => console.log('logout')}
+          onClick={handleSignOut}
           className='text-gray-100 text-md font-medium focus:bg-transparent focus:text-yellow-500 transition-colors cursor-pointer'
         >
           <LogOut className='h-4 w-4 mr-2 hidden sm:block' />

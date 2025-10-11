@@ -8,12 +8,6 @@ import UserDropdown from './UserDropdown'
 import { useRouter } from 'next/navigation'
 
 const Header = () => {
-  const router = useRouter()
-  const handleSignout = async () => {
-    // localStorage.removeItem('token')
-    router.push('/sign-in')
-  }
-
   return (
     <header className='sticky top-0 header'>
       <div className='container header-wrapper'>
