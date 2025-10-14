@@ -21,7 +21,49 @@ https://www.youtube.com/@javascriptmastery/videos
 git remote add origin https://github.com/pmkent/signalist_stock-tracker-app.git
 https://github.com/pmkent/signalist_stock-tracker-app
 
+https://www.coderabbit.ai/
+
+https://www.tradingview.com/widget-docs/widgets/charts/advanced-chart/
+https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js
+
+https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js
+
 $$$$$$$$$$$$$$$
+
+2025-10-13
+
+1:08:57 / 4:17:15 Homepage & Charts
+
+2025-10-11
+
+-Create hooks/useTradingViewWidget.tsx
+
+-Copied https://github.com/adrianhajdin/signalist_stock-tracker-app/blob/main/lib/constants.ts and replaced
+
+
+===========================
+
+50:25 / 
+-Create components/TradingViewWidget.tsx
+
+git checkout -b homepage
+
+===============
+
+2025-10-09
+
+44:51 / 
+
+git checkout -b header
+git checkout -b 
+
+======================
+
+39:02 / 4:17:15 
+
+git commit -m "First commit. Layout and header completed"
+
+git add -A
 
 2025-10-07
 
