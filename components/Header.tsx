@@ -18,6 +18,7 @@ const Header = () => {
               alt='Signalist Logo'
               width={140}
               height={32}
+              priority={true}
               className='h-8 w-auto cursor-pointer'
             />
           </h1>
