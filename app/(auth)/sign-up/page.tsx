@@ -1,7 +1,6 @@
 'use client'
 
 import InputField from '@/components/forms/InputField'
-// import SelectField from '@/components/forms/SelectField'
 import { Button } from '@/components/ui/button'
 import {
   INVESTMENT_GOALS,
@@ -12,8 +11,12 @@ import { useForm } from 'react-hook-form'
 import SelectField from '@/components/forms/SelectField'
 import { CountrySelectField } from '@/components/forms/CountrySelectField'
 import FooterLink from '@/components/forms/FooterLink'
+import { signUpWithEmail } from '@/lib/actions/auth.actions'
+import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 const SignUp = () => {
+  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -23,63 +26,51 @@ const SignUp = () => {
     defaultValues: {
       fullName: '',
       email: '',
-      // password: '',
+      password: '',
       country: 'US',
       investmentGoals: 'Growth',
       riskTolerance: 'Medium',
       preferredIndustry: 'Technology',
     },
-    // resolver: async (data) => {
-    //   return {
-    //     values: data,
-    //     errors: {},
-    //   }
-    // },
     mode: 'onBlur',
   })
-  // const onSubmit: SubmitHandler<FieldValues> = (data) => {
-  //   if (data) {
-  //     console.log(data)
-  //   }
-  // }
   const onSubmit = async (data: SignUpFormData) => {
     try {
-      console.log('data is', data)
-    } catch (error) {
-      console.log('error is', error)
+      const result = await signUpWithEmail(data)
+      if (result.success) router.push('/')
+    } catch (e) {
+      console.error(e)
+      toast.error('Sign up failed', {
+        description:
+          e instanceof Error ? e.message : 'Failed to create an account.',
+      })
     }
   }
   return (
     <>
       <h1 className='form-title'>Sign Up & Personalize</h1>
+
       <form onSubmit={handleSubmit(onSubmit)} className='space-y-5'>
         <InputField
           name='fullName'
-          // control={control}
           label='Full Name'
-          placeholder='Phil M Kieti'
+          placeholder='John Doe'
           register={register}
           error={errors.fullName}
           validation={{ required: 'Full name is required', minLength: 2 }}
-          // required
         />
 
         <InputField
           name='email'
-          // control={control}
           label='Email'
-          placeholder='philmkieti@hotmail.com'
+          placeholder='contact@jsmastery.com'
           register={register}
           error={errors.email}
           validation={{
-            required: 'Email is required',
-            minLength: 2,
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: 'Invalid email address',
-            },
+            required: 'Email name is required',
+            pattern: /^\w+@\w+\.\w+$/,
+            message: 'Email address is required',
           }}
-          // required
         />
 
         <InputField
@@ -89,21 +80,21 @@ const SignUp = () => {
           type='password'
           register={register}
           error={errors.password}
-          validation={{ required: 'Password is required', minLength: 2 }}
+          validation={{ required: 'Password is required', minLength: 8 }}
         />
 
         <CountrySelectField
           name='country'
           label='Country'
           control={control}
-          errors={errors.country}
+          error={errors.country}
           required
         />
 
         <SelectField
           name='investmentGoals'
-          label='InvestmentGoals'
-          placeholder='Select your investment goal(s)'
+          label='Investment Goals'
+          placeholder='Select your investment goal'
           options={INVESTMENT_GOALS}
           control={control}
           error={errors.investmentGoals}

@@ -29,7 +29,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
           <div className='flex items-center justify-between'>
             <div>
               <cite className='auth-testimonial-author'>
-                Phil M Kieti - Ethan $.
+                PhilMKieti - Ethan $.
               </cite>
               <p className='max-md:text-xs text-gray-500'>Retail Investor</p>
             </div>
