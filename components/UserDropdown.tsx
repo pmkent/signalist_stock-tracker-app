@@ -12,8 +12,8 @@ import { LogOut } from 'lucide-react'
 import NavItems from './NavItems'
 import { useRouter } from 'next/navigation'
 
-const UserDropdown = () => {
-  const user = { name: 'Phil', email: 'philmkieti@hotmail.com' }
+const UserDropdown = ({ user }: { user: User }) => {
+  // const user = { name: 'Phil', email: 'philmkieti@hotmail.com' }
   const router = useRouter()
   const handleSignOut = async () => {
     // localStorage.removeItem('token')
