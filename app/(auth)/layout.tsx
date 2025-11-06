@@ -1,8 +1,13 @@
+import { auth } from '@/lib/better-auth/auth'
+import { headers } from 'next/headers'
 import Image from 'next/image'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
-const AuthLayout = ({ children }: { children: React.ReactNode }) => {
+const AuthLayout = async ({ children }: { children: React.ReactNode }) => {
+  const session = await auth.api.getSession({ headers: await headers() })
+  if (session?.user) redirect('/')
   return (
     <main className='auth-layout'>
       <section className='auth-left-section scrollbar-hide-default'>
@@ -28,9 +33,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
           </blockquote>
           <div className='flex items-center justify-between'>
             <div>
-              <cite className='auth-testimonial-author'>
-                PhilMKieti - Ethan $.
-              </cite>
+              <cite className='auth-testimonial-author'>Phil M Kieti</cite>
               <p className='max-md:text-xs text-gray-500'>Retail Investor</p>
             </div>
             <div className='flex items-center gap-0.5'>

@@ -3,53 +3,7 @@
 // import { success } from 'better-auth'
 import { auth } from '@/lib/better-auth/auth'
 import { inngest } from '@/lib/inngest/client'
-
-// export const signUpWithEmail = async ({
-//   email,
-//   password,
-//   fullName,
-//   country,
-//   investmentGoals,
-//   riskTolerance,
-//   preferredIndustry,
-// }: SignUpFormData) => {
-//   // export const signUpWithEmail = async (data: SignUpFormData) => {
-//   try {
-//     // console.log('data is', email, password)
-//     const response = await auth.api.signUpEmail({
-//       body: {
-//         //   body: {
-//         email, // email: email, // data.email,
-//         password, //password: password, // data.password,
-//         name: fullName, // data.fullName,
-//         // country,
-//         // investmentGoals,
-//         // riskTolerance,
-//         // preferredIndustry,
-//       },
-//     })
-
-//     if (response) {
-//       await inngest.send({
-//         name: 'app/user.created',
-//         data: {
-//           email, // email: email, // data.email,
-//           // password,
-//           name: fullName, //: fullName, // data.fullName,
-//           country,
-//           investmentGoals,
-//           riskTolerance,
-//           preferredIndustry,
-//         },
-//       })
-//       //   return { success: true, data: response }
-//     }
-//     return { success: true, data: response }
-//   } catch (error) {
-//     console.log('Sign up failed', error)
-//     return { success: false, error: 'Sign up failed' }
-//   }
-// }
+import { headers } from 'next/headers'
 
 export const signUpWithEmail = async ({
   email,
@@ -86,11 +40,11 @@ export const signUpWithEmail = async ({
   }
 }
 
-export const signInWithEmail = async (data: SignInFormData) => {
+export const signInWithEmail = async ({ email, password }: SignInFormData) => {
   try {
-    // console.log('data is', data)
+    // console.log('email is : ', data, ' password is : ', data.password)
     const response = await auth.api.signInEmail({
-      body: { email: data.email, password: data.password },
+      body: { email, password },
     })
     return { success: true, data: response }
   } catch (e) {
@@ -99,15 +53,16 @@ export const signInWithEmail = async (data: SignInFormData) => {
   }
 }
 
-// export const signOut = async () => {
-//   try {
-//     const response = await auth.api.signOut()
-//     return { success: true, data: response }
-//   } catch (e) {
-//     console.log('Sign out failed', e)
-//     return { success: false, error: 'Sign out failed' }
-//   }
-// }
+export const signOut = async () => {
+  try {
+    // await auth.api.signOut()
+    const response = await auth.api.signOut({ headers: await headers() })
+    return { success: true, data: response }
+  } catch (e) {
+    console.log('Sign out failed', e)
+    return { success: false, error: 'Sign out failed' }
+  }
+}
 
 // export const getUser = async () => {
 //   try {

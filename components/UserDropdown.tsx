@@ -11,11 +11,13 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { LogOut } from 'lucide-react'
 import NavItems from './NavItems'
 import { useRouter } from 'next/navigation'
+import { signOut } from '@/lib/actions/auth.actions'
 
 const UserDropdown = ({ user }: { user: User }) => {
   // const user = { name: 'Phil', email: 'philmkieti@hotmail.com' }
   const router = useRouter()
   const handleSignOut = async () => {
+    await signOut()
     // localStorage.removeItem('token')
     router.push('/sign-in')
   }
